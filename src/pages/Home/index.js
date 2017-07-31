@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import { Page, Button, Card } from 'bakareader/src/components';
+import { Page, Button, Card, HorizontalSlider } from 'bakareader/src/components';
 import appStyle from 'bakareader/src/appStyle';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
-  welcome: {
+  header: {
     fontSize: appStyle.font.size.huge,
-    textAlign: 'center',
-    margin: appStyle.grid.x1,
+    marginTop: appStyle.grid.x2,
+    marginLeft: appStyle.grid.x2,
   },
   instructions: {
     textAlign: 'center',
@@ -38,12 +36,16 @@ class Home extends Component {
 
   render() {
     return (
-      <Page>
+      <Page noMargin>
         <View style={styles.container}>
-          <Text style={styles.welcome}>
-            Welcome to React Native!
+          <Text style={styles.header}>
+            En cours
           </Text>
-          <Card coverUri={require('bakareader/assets/images/dummy/cover1.jpg')} title="Card title" />
+          <HorizontalSlider>
+            <Card coverUri={require('bakareader/assets/images/dummy/cover1.jpg')} title="Nisekoi Tome 1" />
+            <Card coverUri={require('bakareader/assets/images/dummy/cover2.jpg')} title="Nisekoi Tome 2" />
+            <Card coverUri={require('bakareader/assets/images/dummy/cover3.jpg')} title="Nisekoi Tome 3" />
+          </HorizontalSlider>
           <Text style={styles.instructions}>
             Double tap R on your keyboard to reload,{'\n'}
             Shake or press menu button for dev menu
