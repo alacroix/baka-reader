@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import { Page, Button } from 'bakareader/src/components';
+import { Page, Button, Card } from 'bakareader/src/components';
 import appStyle from 'bakareader/src/appStyle';
 
 const styles = StyleSheet.create({
@@ -43,9 +43,7 @@ class Home extends Component {
           <Text style={styles.welcome}>
             Welcome to React Native!
           </Text>
-          <Text style={styles.instructions}>
-            This is the Home page
-          </Text>
+          <Card coverUri={require('bakareader/assets/images/dummy/cover1.jpg')} title="Card title" />
           <Text style={styles.instructions}>
             Double tap R on your keyboard to reload,{'\n'}
             Shake or press menu button for dev menu
