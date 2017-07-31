@@ -6,7 +6,7 @@ import appStyle from 'bakareader/src/appStyle';
 
 const styles = StyleSheet.create({
   wrapper: {
-    marginTop: 32,
+    marginTop: appStyle.grid.x4,
     marginBottom: appStyle.grid.x2,
   },
   content: {
