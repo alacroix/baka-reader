@@ -5,3 +5,5 @@ cache:
   directories: 
     - jest/tmp
     - node_modules
+scripts:
+  - npm run test:ci
