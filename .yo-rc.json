@@ -1,0 +1,9 @@
+{
+  "generator-rn-toolbox": {
+    "eslint": true,
+    "base": true,
+    "jest": true,
+    "travis": true,
+    "vscode": true
+  }
+}
