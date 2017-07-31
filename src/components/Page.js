@@ -1,6 +1,6 @@
 // @flow
 
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import appStyle from 'bakareader/src/appStyle';
 
@@ -12,24 +12,26 @@ const styles = StyleSheet.create({
   },
 });
 
-const Page = props => (
-  <View
-    style={[styles.page, {
-      paddingTop: props.noNavBar ? 0 : appStyle.grid.x2,
-      paddingHorizontal: props.noMargin ? 0 : appStyle.grid.x3,
-      backgroundColor: props.backgroundColor,
-    }]}
-  >
-    {props.children}
-  </View>
-);
+type PropsType = {
+  children: any,
+  noMargin?: boolean,
+  noNavBar?: boolean,
+  backgroundColor?: string,
+}
 
-Page.propTypes = {
-  children: PropTypes.node.isRequired,
-  noMargin: PropTypes.bool,
-  noNavBar: PropTypes.bool,
-  backgroundColor: PropTypes.string,
-};
+function Page(props: PropsType) {
+  return (
+    <View
+      style={[styles.page, {
+        paddingTop: props.noNavBar ? 0 : appStyle.grid.x2,
+        paddingHorizontal: props.noMargin ? 0 : appStyle.grid.x3,
+        backgroundColor: props.backgroundColor,
+      }]}
+    >
+      {props.children}
+    </View>
+  );
+}
 
 Page.defaultProps = {
   children: null,
