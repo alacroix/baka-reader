@@ -1,6 +1,6 @@
 // @flow
 
-import React, { PureComponent, PropTypes } from 'react';
+import React from 'react';
 import { TouchableOpacity, Text, StyleSheet, View } from 'react-native';
 
 import appStyle from 'bakareader/src/appStyle';
@@ -26,22 +26,20 @@ const styles = StyleSheet.create({
   },
 });
 
-class Button extends PureComponent {
-  render() {
-    return (
-      <TouchableOpacity onPress={this.props.onPress} style={styles.container}>
-        <View style={styles.button}>
-          <Text style={[styles.text]}>{this.props.children.toUpperCase()}</Text>
-        </View>
-      </TouchableOpacity>
-    );
-  }
+type PropsType = {
+  children: string,
+  onPress?: () => void,
 }
 
-Button.propTypes = {
-  children: PropTypes.string.isRequired,
-  onPress: PropTypes.func,
-};
+function Button(props: PropsType) {
+  return (
+    <TouchableOpacity onPress={props.onPress} style={styles.container}>
+      <View style={styles.button}>
+        <Text style={[styles.text]}>{props.children.toUpperCase()}</Text>
+      </View>
+    </TouchableOpacity>
+  );
+}
 
 Button.defaultProps = {
   onPress: () => {},
