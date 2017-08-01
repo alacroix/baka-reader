@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TouchableIcon should render the touchable icon 1`] = `
+<View
+  accessibilityComponentType={undefined}
+  accessibilityLabel={undefined}
+  accessibilityTraits={undefined}
+  accessible={true}
+  collapsable={undefined}
+  hitSlop={undefined}
+  isTVSelectable={true}
+  nativeID={undefined}
+  onLayout={undefined}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "flex": 1,
+      "justifyContent": "center",
+      "opacity": 1,
+    }
+  }
+  testID={undefined}
+  tvParallaxProperties={undefined}
+>
+  <Text
+    accessible={true}
+    allowFontScaling={false}
+    disabled={false}
+    ellipsizeMode="tail"
+    style={
+      Array [
+        Object {
+          "color": "#333333",
+          "fontSize": 30,
+        },
+        undefined,
+        Object {
+          "fontFamily": "Material Icons",
+          "fontStyle": "normal",
+          "fontWeight": "normal",
+        },
+      ]
+    }
+  >
+    
+  </Text>
+</View>
+`;
