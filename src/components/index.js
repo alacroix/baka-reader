@@ -6,3 +6,4 @@ export { default as Card } from './Card';
 export { default as Grid } from './Grid';
 export { default as HorizontalSlider } from './HorizontalSlider';
 export { default as Page } from './Page';
+export { default as TouchableIcon } from './TouchableIcon';
