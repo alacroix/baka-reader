@@ -10,38 +10,61 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     minHeight: appStyle.dimensions.touchableHeight,
-    marginVertical: appStyle.grid.x1,
+    minWidth: 64,
+    paddingHorizontal: appStyle.grid.x1,
   },
   button: {
-    alignSelf: 'stretch',
     justifyContent: 'center',
     height: appStyle.dimensions.visibleButtonHeight,
-    backgroundColor: appStyle.colors.primary,
     paddingHorizontal: appStyle.grid.x1,
   },
   text: {
     textAlign: 'center',
-    color: appStyle.colors.lightText,
     fontSize: appStyle.font.size.default,
+  },
+  raisedButton: {
+    backgroundColor: appStyle.colors.primary,
+  },
+  raisedText: {
+    color: appStyle.colors.lightText,
+  },
+  flatButton: {
+    backgroundColor: 'transparent',
+  },
+  flatText: {
+    color: appStyle.colors.primary,
   },
 });
 
 type PropsType = {
   children: string,
+  type?: 'flat' | 'raised',
   onPress?: () => void,
 }
 
 function Button(props: PropsType) {
-  return (
-    <TouchableOpacity onPress={props.onPress} style={styles.container}>
-      <View style={styles.button}>
-        <Text style={[styles.text]}>{props.children.toUpperCase()}</Text>
-      </View>
-    </TouchableOpacity>
-  );
+  switch (props.type) {
+    case 'flat':
+      return (
+        <TouchableOpacity activeOpacity={0.6} onPress={props.onPress} style={styles.container}>
+          <View style={[styles.button, styles.flatButton]}>
+            <Text style={[styles.text, styles.flatText]}>{props.children.toUpperCase()}</Text>
+          </View>
+        </TouchableOpacity>
+      );
+    default:
+      return (
+        <TouchableOpacity activeOpacity={0.6} onPress={props.onPress} style={styles.container}>
+          <View style={[styles.button, styles.raisedButton]}>
+            <Text style={[styles.text, styles.raisedText]}>{props.children.toUpperCase()}</Text>
+          </View>
+        </TouchableOpacity>
+      );
+  }
 }
 
 Button.defaultProps = {
+  type: 'raised',
   onPress: () => {},
 };
 
