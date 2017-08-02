@@ -5,5 +5,8 @@ cache:
   directories: 
     - jest/tmp
     - node_modules
+before_install: yarn global add greenkeeper-lockfile@1
+before_script: greenkeeper-lockfile-update
+after_script: greenkeeper-lockfile-upload
 scripts:
   - npm run test:ci

@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "npm run test:lint && npm run test:flow && npm run test:coverage",
+    "test": "npm run test:lint && npm run test:coverage",
     "test:ci": "npm run test:lint && npm run test:coverage",
     "test:coverage": "jest --coverage",
     "test:flow": "flow",
@@ -12,12 +12,12 @@
     "test:unit": "jest"
   },
   "dependencies": {
-    "babel-preset-react-native-stage-0": "^1.0.1",
+    "babel-preset-react-native-stage-0": "1.0.1",
     "react": "16.0.0-alpha.12",
-    "react-native": "0.46.4",
-    "react-native-modal": "^2.5.0",
-    "react-native-vector-icons": "^4.3.0",
-    "react-navigation": "^1.0.0-beta.11"
+    "react-native": "0.47.1",
+    "react-native-modal": "2.5.0",
+    "react-native-vector-icons": "4.3.0",
+    "react-navigation": "1.0.0-beta.11"
   },
   "devDependencies": {
     "babel-core": "6.25.0",
@@ -29,7 +29,7 @@
     "eslint-plugin-import": "2.7.0",
     "eslint-plugin-jsx-a11y": "5.1.1",
     "eslint-plugin-react": "7.1.0",
-    "flow-bin": "^0.47.0",
+    "flow-bin": "0.52.0",
     "jest": "20.0.4",
     "react-test-renderer": "16.0.0-alpha.12"
   },
@@ -38,5 +38,10 @@
     "moduleNameMapper": {
       "^[./a-zA-Z0-9$_-]+\\.(jpg|png|gif|eot|svg|ttf|woff|woff2|mp4|webm)$": "<rootDir>/jest/FileStub.js"
     }
+  },
+  "greenkeeper": {
+    "ignore": [
+      "eslint-plugin-jsx-a11y"
+    ]
   }
 }
