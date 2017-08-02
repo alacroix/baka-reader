@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input should render an URL formatted input  1`] = `
+<TextInput
+  autoCapitalize="none"
+  autoCorrect={false}
+  keyboardType="url"
+  style={
+    Object {
+      "borderColor": "gray",
+      "borderWidth": 1,
+      "height": 40,
+      "paddingHorizontal": 8,
+    }
+  }
+  type="url"
+/>
+`;
+
+exports[`Input should render an default input if no type is provided 1`] = `<TextInput />`;
