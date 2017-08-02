@@ -5,9 +5,15 @@ import renderer from 'react-test-renderer';
 import Button from '../Button';
 
 describe('Button', () => {
-  it('should render the button', () => {
+  it('should render a raised button', () => {
     const tree = renderer.create(
-      <Button>Hello</Button>,
+      <Button type="raised">Hello</Button>,
+    ).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+  it('should render a flat button', () => {
+    const tree = renderer.create(
+      <Button type="flat">Cancel</Button>,
     ).toJSON();
     expect(tree).toMatchSnapshot();
   });
