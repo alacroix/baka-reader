@@ -46,6 +46,10 @@ type PropsType = {
 }
 
 class ModalDownload extends Component {
+  static defaultProps = {
+    onConfirm: () => {},
+  }
+
   state: StateType;
 
   componentWillMount() {
@@ -60,7 +64,6 @@ class ModalDownload extends Component {
   onInputChange: Function;
 
   onConfirm() {
-    console.log('confirm')
     if (this.props.onConfirm) {
       this.props.onConfirm({ url: this.state.url });
       this.props.onClose();
@@ -100,9 +103,5 @@ class ModalDownload extends Component {
     );
   }
 }
-
-ModalDownload.defaultProps = {
-  onConfirm: () => {},
-};
 
 export default ModalDownload;
