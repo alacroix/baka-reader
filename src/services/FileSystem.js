@@ -1,5 +1,7 @@
 import RNFetchBlob from 'react-native-fetch-blob';
 
+import { createThumbnail } from './Image';
+
 const DIRECTORIES = RNFetchBlob.fs.dirs;
 
 function isRawBook(file) {
@@ -41,5 +43,6 @@ export async function formatBook(book) {
   const files = await getDirectoryFiles(pagesPath);
   const images = files.filter(file => isImage(file));
   await Promise.all(images.map((image, index) => RNFetchBlob.fs.mv(image.path, `${pagesPath}/${index + 1}.jpg`)));
+  await createThumbnail(path);
   console.log('done');
 }
