@@ -2,14 +2,11 @@
 
 import React, { Component } from 'react';
 import {
-  ActivityIndicator,
   Image,
   StyleSheet,
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
-
-import { getBookPages } from 'bakareader/src/services/FileSystem';
 
 const styles = StyleSheet.create({
   wrapper: {

@@ -38,7 +38,6 @@ export async function getDirectoryFiles(dirPath) {
 export async function formatBook(book) {
   const path = `${BOOKS_DIR}/${book.filename}`;
   const pagesPath = `${path}/pages`;
-  let ref = performance.now();
   await RNFetchBlob.fs.mkdir(path);
   await RNFetchBlob.fs.mv(book.path, pagesPath);
   const files = await getDirectoryFiles(pagesPath);

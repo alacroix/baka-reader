@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
-import { Button, Card, Grid, HorizontalSlider, Page } from 'bakareader/src/components';
+import { Button, Grid, Page } from 'bakareader/src/components';
 import appStyle from 'bakareader/src/appStyle';
 
 import ModalDownload from './ModalDownload';
