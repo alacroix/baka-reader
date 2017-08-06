@@ -47,6 +47,12 @@
     "react/no-unused-prop-types": 0,
     "react/prefer-stateless-function": 0,
     "react/no-string-refs": 0,
-    "global-require": 0
+    "global-require": 0,
+    "flowtype/define-flow-type": 2
+  },
+  "settings": {
+    "flowtype": {
+      "onlyFilesWithFlowAnnotation": true
+    }
   }
 }

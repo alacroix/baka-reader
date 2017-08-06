@@ -1,3 +1,5 @@
+// @flow
+
 import React, { Component } from 'react';
 import { StatusBar, StyleSheet, View } from 'react-native';
 import { Book, Page, TouchableIcon } from 'bakareader/src/components';
@@ -12,6 +14,10 @@ type PropsType = {
   book: RNFetchBlobStat,
   navigation: any,
 };
+
+type StateType = {
+  lastPress: number,
+}
 
 class Infos extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -32,6 +38,8 @@ class Infos extends Component {
       ),
     };
   };
+
+  state: StateType;
 
   componentWillMount() {
     this.handlePress = this.handlePress.bind(this);

@@ -1,3 +1,5 @@
+// @flow
+/* eslint-disable no-undef */
 declare type RNFetchBlobStat = {
   filename: string,
   lastModified: number,
