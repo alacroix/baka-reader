@@ -23,6 +23,7 @@
     }
   },
   "plugins": [
+    "flow",
     "react"
   ],
   "rules": {
