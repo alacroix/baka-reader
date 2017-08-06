@@ -44,11 +44,9 @@ class AppLoader extends Component {
   };
 
   componentWillMount() {
-    createBooksDirectory();
-    getUserImportedBooks()
-      .then((rawBooks) => {
-        this.importRawBooks(rawBooks);
-      });
+    createBooksDirectory()
+      .then(() => getUserImportedBooks())
+      .then(rawBooks => this.importRawBooks(rawBooks));
   }
 
   importRawBooks(rawBooks: Array<RNFetchBlobStat>) {

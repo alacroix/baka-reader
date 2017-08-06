@@ -13,14 +13,17 @@ function isImage(file) {
 }
 
 export function getParentPath(path) {
-  return path.substring(0, path.lastIndexOf('/') + 1);
+  return path.substring(0, path.lastIndexOf('/'));
 }
 
-const BOOKS_DIR = `${getParentPath(DIRECTORIES.DocumentDir)}Books`;
+export async function getDirectoryFiles(dirPath) {
+  return RNFetchBlob.fs.lstat(dirPath).then(files => files);
+}
+
+const BOOKS_DIR = `${getParentPath(DIRECTORIES.DocumentDir)}/Library/Books`;
 
 export async function createBooksDirectory() {
   const isAlreadyPresent = await RNFetchBlob.fs.isDir(BOOKS_DIR);
-
   if (!isAlreadyPresent) {
     await RNFetchBlob.fs.mkdir(BOOKS_DIR);
   }
@@ -29,10 +32,6 @@ export async function createBooksDirectory() {
 export async function getUserImportedBooks() {
   const files = await RNFetchBlob.fs.lstat(DIRECTORIES.DocumentDir);
   return files.filter(file => isRawBook(file));
-}
-
-export async function getDirectoryFiles(dirPath) {
-  return RNFetchBlob.fs.lstat(dirPath).then(files => files);
 }
 
 export async function formatBook(book) {
