@@ -1,7 +1,12 @@
 // @flow
 
 import React, { Component } from 'react';
-import { Image, StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
+import {
+  Image,
+  StyleSheet,
+  TouchableWithoutFeedback,
+  View,
+} from 'react-native';
 
 const styles = StyleSheet.create({
   wrapper: {
@@ -26,13 +31,13 @@ const styles = StyleSheet.create({
   },
   image: {
     flex: 1,
+    width: '100%',
   },
 });
 
 type PropsType = {
+  book: RNFetchBlobStat,
   currentPage: number,
-  images: Array<any>,
-  totalPages: number,
   rtl?: boolean,
   onPageChange?: (number) => void,
   onPress?: () => void,
@@ -40,6 +45,8 @@ type PropsType = {
 
 type StateType = {
   currentPage: number,
+  loading: boolean,
+  pages: Array<any>,
 }
 
 class Book extends Component {
@@ -83,9 +90,9 @@ class Book extends Component {
     if (currentPage < 1) {
       currentPage = 1;
     }
-    if (currentPage > this.props.totalPages) {
-      currentPage = this.props.totalPages;
-    }
+    // if (currentPage > this.state.pages.length) {
+    //   currentPage = this.state.pages.length;
+    // }
 
     this.setState({
       currentPage,
@@ -101,11 +108,11 @@ class Book extends Component {
   }
 
   render() {
-    const imageUri = this.props.images[this.state.currentPage - 1];
+    const imageUri = `${this.props.book.path}/pages/${this.state.currentPage}.jpg`;
     return (
       <View style={styles.wrapper}>
         <TouchableWithoutFeedback onPress={this.handlePress} style={StyleSheet.absoluteFill}>
-          <Image source={imageUri} style={styles.image} resizeMode={'contain'} />
+          <Image source={{ uri: imageUri }} style={styles.image} resizeMode={'contain'} />
         </TouchableWithoutFeedback>
         <View style={styles.leftZone}>
           <TouchableWithoutFeedback onPress={this.handleLeftZonePress}>

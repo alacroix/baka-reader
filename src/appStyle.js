@@ -8,6 +8,7 @@ export default {
       big: 15,
       large: 17,
       huge: 20,
+      title: 36,
     },
   },
   colors: {

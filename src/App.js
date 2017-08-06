@@ -3,6 +3,9 @@ import { StackNavigator } from 'react-navigation';
 import * as Pages from 'bakareader/src/pages';
 
 export default StackNavigator({
+  appLoader: {
+    screen: Pages.AppLoader,
+  },
   home: {
     screen: Pages.Home,
   },
@@ -10,5 +13,5 @@ export default StackNavigator({
     screen: Pages.Infos,
   },
 }, {
-  initialRouteName: 'home',
+  initialRouteName: 'appLoader',
 });

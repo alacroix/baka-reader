@@ -3,7 +3,8 @@
 import React, { PureComponent } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 import appStyle from 'bakareader/src/appStyle';
-import Card from './Card';
+
+import GridItem from './GridItem';
 
 const styles = StyleSheet.create({
   grid: {
@@ -15,24 +16,33 @@ const styles = StyleSheet.create({
   },
 });
 
-class Grid extends PureComponent {
-  _keyExtractor = (item, index) => index.toString();
+type PropsType = {
+  books: Array<RNFetchBlobStat>,
+  navigation: any,
+}
 
-  _renderItem() {
-    return (
-      <Card coverUri={require('../../assets/images/dummy/cover1.jpg')} title="Nisekoi Tome 1" />
-    );
+class Grid extends PureComponent {
+  _keyExtractor = (item: RNFetchBlobStat, index: number) => index.toString();
+
+  _onPressItem = (book: RNFetchBlobStat) => {
+    this.props.navigation.navigate('infos', { book });
   }
 
+  _renderItem = ({ item }) => (
+    <GridItem
+      item={item}
+      onPressItem={this._onPressItem}
+    />
+  )
+
+  props: PropsType;
+
   render() {
-    const data = [
-      { title: 1 }, { title: 2 }, { title: 3 }, { title: 4 }, { title: 5 }, { title: 6 },
-    ];
     return (
       <View style={styles.grid}>
         <FlatList
           contentContainerStyle={styles.content}
-          data={data}
+          data={this.props.books}
           keyExtractor={this._keyExtractor}
           numColumns={4}
           renderItem={this._renderItem}

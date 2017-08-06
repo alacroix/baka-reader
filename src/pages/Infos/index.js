@@ -1,3 +1,5 @@
+// @flow
+
 import React, { Component } from 'react';
 import { StatusBar, StyleSheet, View } from 'react-native';
 import { Book, Page, TouchableIcon } from 'bakareader/src/components';
@@ -9,25 +11,25 @@ const styles = StyleSheet.create({
 });
 
 type PropsType = {
+  book: RNFetchBlobStat,
   navigation: any,
 };
 
-const IMAGES = [
-  require('bakareader/assets/images/dummy/content1.jpg'),
-  require('bakareader/assets/images/dummy/content2.jpg'),
-  require('bakareader/assets/images/dummy/content3.jpg'),
-];
+type StateType = {
+  lastPress: number,
+}
 
 class Infos extends Component {
   static navigationOptions = ({ navigation }) => {
     const { state, setParams } = navigation;
-    const isHidden = state.params ? state.params.isHidden : false;
+    const isHidden: boolean = state.params ? state.params.isHidden : false;
+    const book: RNFetchBlobStat = state.params.book;
     if (isHidden) {
       return { header: null, gesturesEnabled: false };
     }
 
     return {
-      title: 'Reader',
+      title: book.filename,
       headerRight: (
         <TouchableIcon
           name="fullscreen"
@@ -36,6 +38,8 @@ class Infos extends Component {
       ),
     };
   };
+
+  state: StateType;
 
   componentWillMount() {
     this.handlePress = this.handlePress.bind(this);
@@ -73,9 +77,8 @@ class Infos extends Component {
         <View style={styles.container}>
           <Book
             currentPage={1}
-            images={IMAGES}
+            book={params.book}
             rtl
-            totalPages={IMAGES.length}
             onPress={this.handlePress}
           />
         </View>
