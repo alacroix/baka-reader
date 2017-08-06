@@ -6,6 +6,7 @@ import { Page } from 'bakareader/src/components';
 import {
   createBooksDirectory,
   formatBook,
+  getUserBooks,
   getUserImportedBooks,
 } from 'bakareader/src/services/FileSystem';
 
@@ -48,12 +49,10 @@ class AppLoader extends Component {
       });
   }
 
-  importRawBooks(rawBooks) {
-    rawBooks.forEach((book) => {
-      formatBook(book)
-        .then(() => { console.log('done in index'); })
-        .catch((err) => console.log(err));
-    });
+  importRawBooks(rawBooks: Array<RNFetchBlobStat>) {
+    Promise.all(rawBooks.map(book => formatBook(book)))
+      .then(() => getUserBooks())
+      .then(books => this.props.navigation.navigate('home', { books }));
   }
 
   props: PropsType;

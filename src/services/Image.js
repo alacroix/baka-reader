@@ -5,10 +5,10 @@ import ImageResizer from 'react-native-image-resizer';
 export async function createThumbnail(bookPath) {
   await ImageResizer.createResizedImage(
     `${bookPath}/pages/1.jpg`,
-    160,
-    240,
+    160 * 2,
+    240 * 2,
     'JPEG',
-    100,
+    80,
   )
     .then(resizedImageUri => RNFetchBlob.fs.mv(resizedImageUri, `${bookPath}/thumbnail.jpg`));
 }

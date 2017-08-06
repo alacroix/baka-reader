@@ -18,12 +18,15 @@ const styles = StyleSheet.create({
 });
 
 type PropsType = {
+  books: Array<any>,
   navigation: any,
 };
 
 class Home extends Component {
   static navigationOptions = {
     title: 'Home',
+    headerLeft: null,
+    gesturesEnabled: false,
   };
 
   state = {
@@ -36,29 +39,17 @@ class Home extends Component {
 
   props: PropsType;
 
-  _goToInfos = () => {
-    this.props.navigation.navigate('infos');
-  }
-
   render() {
+    const books = this.props.navigation.state.params.books;
     return (
       <Page noMargin>
         <View style={styles.container}>
           <ScrollView showsVerticalScrollIndicator={false}>
             <Text style={styles.header}>
-              En cours
-            </Text>
-            <HorizontalSlider>
-              <Card coverUri={require('bakareader/assets/images/dummy/cover1.jpg')} title="Nisekoi Tome 1" />
-              <Card coverUri={require('bakareader/assets/images/dummy/cover2.jpg')} title="Nisekoi Tome 2" />
-              <Card coverUri={require('bakareader/assets/images/dummy/cover3.jpg')} title="Nisekoi Tome 3" />
-            </HorizontalSlider>
-            <Button onPress={this._goToInfos}>Go to the Infos page</Button>
-            <Button onPress={() => { this.setModalVisible(true); }}>Go to the Download modal</Button>
-            <Text style={styles.header}>
               Collection
             </Text>
-            <Grid />
+            <Grid books={books} navigation={this.props.navigation} />
+            <Button onPress={() => { this.setModalVisible(true); }}>Go to the Download modal</Button>
             <ModalDownload
               isVisible={this.state.modalVisible}
               onClose={() => this.setModalVisible(false)}

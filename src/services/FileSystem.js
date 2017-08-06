@@ -38,11 +38,21 @@ export async function getDirectoryFiles(dirPath) {
 export async function formatBook(book) {
   const path = `${BOOKS_DIR}/${book.filename}`;
   const pagesPath = `${path}/pages`;
+  let ref = performance.now();
   await RNFetchBlob.fs.mkdir(path);
-  await RNFetchBlob.fs.cp(book.path, pagesPath);
+  await RNFetchBlob.fs.mv(book.path, pagesPath);
   const files = await getDirectoryFiles(pagesPath);
   const images = files.filter(file => isImage(file));
   await Promise.all(images.map((image, index) => RNFetchBlob.fs.mv(image.path, `${pagesPath}/${index + 1}.jpg`)));
   await createThumbnail(path);
-  console.log('done');
+}
+
+export async function getUserBooks() {
+  const files = await getDirectoryFiles(BOOKS_DIR);
+  return files.filter(file => file.type === 'directory');
+}
+
+export async function getBookPages(path) {
+  const files = await getDirectoryFiles(`${path}/pages`);
+  return files.filter(file => isImage(file));
 }

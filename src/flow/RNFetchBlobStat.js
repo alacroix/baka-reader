@@ -1,5 +1,5 @@
-declare type BlobStat = {
-  fileinfo: string,
+declare type RNFetchBlobStat = {
+  filename: string,
   lastModified: number,
   path: string,
   size: string,
