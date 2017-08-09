@@ -1,7 +1,10 @@
+// @flow
+
 import React, { Component } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { Button, Grid, Page } from 'bakareader/src/components';
+import { getBookInfos } from 'bakareader/src/services/FileSystem';
 import appStyle from 'bakareader/src/appStyle';
 
 import ModalDownload from './ModalDownload';
@@ -33,7 +36,12 @@ class Home extends Component {
     modalVisible: false,
   }
 
-  setModalVisible(visible) {
+  onBookPress(book: RNFetchBlobStat) {
+    getBookInfos(book.path)
+      .then(infos => this.props.navigation.navigate('infos', { book, infos }));
+  }
+
+  setModalVisible(visible: boolean) {
     this.setState({ modalVisible: visible });
   }
 
@@ -48,7 +56,7 @@ class Home extends Component {
             <Text style={styles.header}>
               Collection
             </Text>
-            <Grid books={books} navigation={this.props.navigation} />
+            <Grid books={books} onBookPress={book => this.onBookPress(book)} />
             <Button onPress={() => { this.setModalVisible(true); }}>Go to the Download modal</Button>
             <ModalDownload
               isVisible={this.state.modalVisible}

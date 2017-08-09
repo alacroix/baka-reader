@@ -4,6 +4,12 @@ import { createThumbnail } from './Image';
 
 const DIRECTORIES = RNFetchBlob.fs.dirs;
 
+/*
+ * *****************
+ * Utility functions
+ * *****************
+ */
+
 function isRawBook(file) {
   return file.type === 'directory';
 }
@@ -21,6 +27,12 @@ export async function getDirectoryFiles(dirPath) {
 }
 
 const BOOKS_DIR = `${getParentPath(DIRECTORIES.DocumentDir)}/Library/Books`;
+
+/*
+ * *****************
+ * App functions
+ * *****************
+ */
 
 export async function createBooksDirectory() {
   const isAlreadyPresent = await RNFetchBlob.fs.isDir(BOOKS_DIR);
@@ -50,7 +62,12 @@ export async function getUserBooks() {
   return files.filter(file => file.type === 'directory');
 }
 
-export async function getBookPages(path) {
+export async function getBookInfos(path) {
+  const infos = {};
   const files = await getDirectoryFiles(`${path}/pages`);
-  return files.filter(file => isImage(file));
+  const images = files.filter(file => isImage(file));
+
+  infos.totalPages = images.length;
+
+  return infos;
 }
