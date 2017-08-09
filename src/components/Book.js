@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
 type PropsType = {
   book: RNFetchBlobStat,
   currentPage: number,
+  totalPages: number,
   rtl?: boolean,
   onPageChange?: (number) => void,
   onPress?: () => void,
@@ -90,9 +91,9 @@ class Book extends Component {
     if (currentPage < 1) {
       currentPage = 1;
     }
-    // if (currentPage > this.state.pages.length) {
-    //   currentPage = this.state.pages.length;
-    // }
+    if (currentPage > this.props.totalPages) {
+      currentPage = this.props.totalPages;
+    }
 
     this.setState({
       currentPage,

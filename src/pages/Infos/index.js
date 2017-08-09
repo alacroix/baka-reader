@@ -11,7 +11,6 @@ const styles = StyleSheet.create({
 });
 
 type PropsType = {
-  book: RNFetchBlobStat,
   navigation: any,
 };
 
@@ -77,6 +76,7 @@ class Infos extends Component {
         <View style={styles.container}>
           <Book
             currentPage={1}
+            totalPages={params.infos.totalPages}
             book={params.book}
             rtl
             onPress={this.handlePress}
