@@ -18,11 +18,11 @@ function isImage(file) {
   return file.filename.split('.').pop() === 'jpg';
 }
 
-export function getParentPath(path) {
+function getParentPath(path) {
   return path.substring(0, path.lastIndexOf('/'));
 }
 
-export async function getDirectoryFiles(dirPath) {
+async function getDirectoryFiles(dirPath) {
   return RNFetchBlob.fs.lstat(dirPath).then(files => files);
 }
 
