@@ -1,0 +1,399 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppLoader should render itself 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flex": 1,
+        "flexDirection": "column",
+        "justifyContent": "flex-start",
+      },
+      Object {
+        "backgroundColor": undefined,
+        "paddingHorizontal": 0,
+        "paddingTop": 16,
+      },
+    ]
+  }
+>
+  <View
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <RCTScrollView
+      showsVerticalScrollIndicator={false}
+    >
+      <View>
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          disabled={false}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "fontSize": 20,
+              "marginLeft": 16,
+              "marginTop": 16,
+            }
+          }
+        >
+          Collection
+        </Text>
+        <View
+          style={
+            Object {
+              "marginTop": 16,
+            }
+          }
+        >
+          <RCTScrollView
+            contentContainerStyle={
+              Object {
+                "paddingBottom": 32,
+                "paddingTop": 16,
+              }
+            }
+            data={Array []}
+            disableVirtualization={false}
+            getItem={[Function]}
+            getItemCount={[Function]}
+            horizontal={false}
+            initialNumToRender={10}
+            keyExtractor={[Function]}
+            maxToRenderPerBatch={10}
+            numColumns={4}
+            onContentSizeChange={[Function]}
+            onEndReachedThreshold={2}
+            onLayout={[Function]}
+            onMomentumScrollEnd={[Function]}
+            onScroll={[Function]}
+            onScrollBeginDrag={[Function]}
+            onScrollEndDrag={[Function]}
+            onViewableItemsChanged={undefined}
+            renderItem={[Function]}
+            scrollEventThrottle={50}
+            showsVerticalScrollIndicator={false}
+            stickyHeaderIndices={Array []}
+            updateCellsBatchingPeriod={50}
+            windowSize={21}
+          >
+            <View />
+          </RCTScrollView>
+        </View>
+        <View
+          accessibilityComponentType={undefined}
+          accessibilityLabel={undefined}
+          accessibilityTraits={undefined}
+          accessible={true}
+          collapsable={undefined}
+          hitSlop={undefined}
+          isTVSelectable={true}
+          nativeID={undefined}
+          onLayout={undefined}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "justifyContent": "center",
+              "minHeight": 48,
+              "minWidth": 64,
+              "opacity": 1,
+              "paddingHorizontal": 8,
+            }
+          }
+          testID={undefined}
+          tvParallaxProperties={undefined}
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "height": 36,
+                  "justifyContent": "center",
+                  "paddingHorizontal": 8,
+                },
+                Object {
+                  "backgroundColor": "#05A5D1",
+                },
+              ]
+            }
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              disabled={false}
+              ellipsizeMode="tail"
+              style={
+                Array [
+                  Object {
+                    "fontSize": 13,
+                    "textAlign": "center",
+                  },
+                  Object {
+                    "color": "#FAFAFA",
+                  },
+                ]
+              }
+            >
+              GO TO THE DOWNLOAD MODAL
+            </Text>
+          </View>
+        </View>
+        <Modal
+          animationType="none"
+          hardwareAccelerated={false}
+          hideOnBack={true}
+          onBackButtonPress={[Function]}
+          onRequestClose={[Function]}
+          transparent={true}
+          visible={false}
+        >
+          <View
+            collapsable={undefined}
+            style={
+              Object {
+                "backgroundColor": "black",
+                "bottom": 0,
+                "height": 1334,
+                "left": 0,
+                "opacity": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
+                "width": 750,
+              }
+            }
+          />
+          <View
+            collapsable={undefined}
+            hideOnBack={true}
+            onBackButtonPress={[Function]}
+            style={
+              Object {
+                "alignItems": "stretch",
+                "flex": 1,
+                "justifyContent": "center",
+                "margin": 37.5,
+                "marginHorizontal": "15%",
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "backgroundColor": "white",
+                  "borderColor": "rgba(0, 0, 0, 0.1)",
+                  "borderRadius": 4,
+                }
+              }
+            >
+              <View
+                style={
+                  Object {
+                    "padding": 24,
+                  }
+                }
+              >
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                  style={
+                    Object {
+                      "fontSize": 20,
+                      "marginBottom": 20,
+                    }
+                  }
+                >
+                  Ajouter un livre
+                </Text>
+                <View
+                  style={Object {}}
+                >
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    disabled={false}
+                    ellipsizeMode="tail"
+                    style={
+                      Object {
+                        "marginBottom": 8,
+                      }
+                    }
+                  >
+                    URL
+                  </Text>
+                  <TextInput
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    keyboardType="url"
+                    onChangeText={[Function]}
+                    placeholder="URL du livre"
+                    style={
+                      Object {
+                        "borderColor": "gray",
+                        "borderWidth": 1,
+                        "height": 40,
+                        "paddingHorizontal": 8,
+                      }
+                    }
+                    type="url"
+                    value=""
+                  />
+                </View>
+              </View>
+              <View
+                style={
+                  Object {
+                    "flexDirection": "row",
+                    "justifyContent": "flex-end",
+                  }
+                }
+              >
+                <View
+                  accessibilityComponentType={undefined}
+                  accessibilityLabel={undefined}
+                  accessibilityTraits={undefined}
+                  accessible={true}
+                  collapsable={undefined}
+                  hitSlop={undefined}
+                  isTVSelectable={true}
+                  nativeID={undefined}
+                  onLayout={undefined}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "justifyContent": "center",
+                      "minHeight": 48,
+                      "minWidth": 64,
+                      "opacity": 1,
+                      "paddingHorizontal": 8,
+                    }
+                  }
+                  testID={undefined}
+                  tvParallaxProperties={undefined}
+                >
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "height": 36,
+                          "justifyContent": "center",
+                          "paddingHorizontal": 8,
+                        },
+                        Object {
+                          "backgroundColor": "transparent",
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      accessible={true}
+                      allowFontScaling={true}
+                      disabled={false}
+                      ellipsizeMode="tail"
+                      style={
+                        Array [
+                          Object {
+                            "fontSize": 13,
+                            "textAlign": "center",
+                          },
+                          Object {
+                            "color": "#05A5D1",
+                          },
+                        ]
+                      }
+                    >
+                      ANNULER
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityComponentType={undefined}
+                  accessibilityLabel={undefined}
+                  accessibilityTraits={undefined}
+                  accessible={true}
+                  collapsable={undefined}
+                  hitSlop={undefined}
+                  isTVSelectable={true}
+                  nativeID={undefined}
+                  onLayout={undefined}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "justifyContent": "center",
+                      "minHeight": 48,
+                      "minWidth": 64,
+                      "opacity": 1,
+                      "paddingHorizontal": 8,
+                    }
+                  }
+                  testID={undefined}
+                  tvParallaxProperties={undefined}
+                >
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "height": 36,
+                          "justifyContent": "center",
+                          "paddingHorizontal": 8,
+                        },
+                        Object {
+                          "backgroundColor": "transparent",
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      accessible={true}
+                      allowFontScaling={true}
+                      disabled={false}
+                      ellipsizeMode="tail"
+                      style={
+                        Array [
+                          Object {
+                            "fontSize": 13,
+                            "textAlign": "center",
+                          },
+                          Object {
+                            "color": "#05A5D1",
+                          },
+                        ]
+                      }
+                    >
+                      TÉLÉCHARGER
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </Modal>
+      </View>
+    </RCTScrollView>
+  </View>
+</View>
+`;

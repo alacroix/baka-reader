@@ -21,7 +21,6 @@ const styles = StyleSheet.create({
 });
 
 type PropsType = {
-  books: Array<any>,
   navigation: any,
 };
 
@@ -36,13 +35,19 @@ class Home extends Component {
     modalVisible: false,
   }
 
+  componentWillMount() {
+    this.toggleModalVisibility = this.toggleModalVisibility.bind(this);
+  }
+
   onBookPress(book: RNFetchBlobStat) {
     getBookInfos(book.path)
       .then(infos => this.props.navigation.navigate('infos', { book, currentPage: 1, infos }));
   }
 
-  setModalVisible(visible: boolean) {
-    this.setState({ modalVisible: visible });
+  toggleModalVisibility: Function;
+
+  toggleModalVisibility() {
+    this.setState({ modalVisible: !this.state.modalVisible });
   }
 
   props: PropsType;
@@ -57,10 +62,10 @@ class Home extends Component {
               Collection
             </Text>
             <Grid books={books} onBookPress={book => this.onBookPress(book)} />
-            <Button onPress={() => { this.setModalVisible(true); }}>Go to the Download modal</Button>
+            <Button onPress={this.toggleModalVisibility}>Go to the Download modal</Button>
             <ModalDownload
               isVisible={this.state.modalVisible}
-              onClose={() => this.setModalVisible(false)}
+              onClose={this.toggleModalVisibility}
             />
           </ScrollView>
         </View>
