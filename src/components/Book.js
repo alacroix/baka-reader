@@ -95,6 +95,10 @@ class Book extends Component {
       currentPage = this.props.totalPages;
     }
 
+    if (this.props.onPageChange) {
+      this.props.onPageChange(currentPage);
+    }
+
     this.setState({
       currentPage,
     });

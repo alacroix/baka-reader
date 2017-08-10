@@ -38,7 +38,7 @@ class Home extends Component {
 
   onBookPress(book: RNFetchBlobStat) {
     getBookInfos(book.path)
-      .then(infos => this.props.navigation.navigate('infos', { book, infos }));
+      .then(infos => this.props.navigation.navigate('infos', { book, currentPage: 1, infos }));
   }
 
   setModalVisible(visible: boolean) {
