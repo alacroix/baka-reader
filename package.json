@@ -39,12 +39,18 @@
     "react-test-renderer": "16.0.0-alpha.12"
   },
   "jest": {
-    "preset": "react-native",
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}"
+    ],
     "moduleNameMapper": {
       "^[./a-zA-Z0-9$_-]+\\.(jpg|png|gif|eot|svg|ttf|woff|woff2|mp4|webm)$": "<rootDir>/jest/FileStub.js"
     },
-    "collectCoverageFrom": [
-      "src/**/*.{js,jsx}"
+    "preset": "react-native",
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!react-native|react-navigation)/"
     ]
   },
   "greenkeeper": {

@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppLoader should render itself 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flex": 1,
+        "flexDirection": "column",
+        "justifyContent": "flex-start",
+      },
+      Object {
+        "backgroundColor": undefined,
+        "paddingHorizontal": 0,
+        "paddingTop": 16,
+      },
+    ]
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 1,
+        "justifyContent": "center",
+      }
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      disabled={false}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "fontSize": 36,
+          "fontWeight": "bold",
+          "textAlign": "center",
+        }
+      }
+    >
+      Baka Reader
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
+        "bottom": "10%",
+        "position": "absolute",
+        "width": "100%",
+      }
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      disabled={false}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "fontSize": 13,
+          "textAlign": "center",
+        }
+      }
+    >
+      Initialisation...
+    </Text>
+  </View>
+</View>
+`;
