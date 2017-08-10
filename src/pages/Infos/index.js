@@ -28,7 +28,7 @@ class Infos extends Component {
     }
 
     return {
-      title: book.filename,
+      title: `${book.filename} [${state.params.currentPage} / ${state.params.infos.totalPages}]`,
       headerRight: (
         <TouchableIcon
           name="fullscreen"
@@ -41,20 +41,17 @@ class Infos extends Component {
   state: StateType;
 
   componentWillMount() {
+    this.handlePageChange = this.handlePageChange.bind(this);
     this.handlePress = this.handlePress.bind(this);
     this.setState({
       lastPress: 0,
     });
   }
 
-  props: PropsType;
-
-  handlePress: Function;
-
-  toggleNavigationBar() {
-    const { state, setParams } = this.props.navigation;
-    const isHidden = state.params ? state.params.isHidden : false;
-    setParams({ isHidden: !isHidden });
+  handlePageChange(currentPage: number) {
+    this.props.navigation.setParams({
+      currentPage,
+    });
   }
 
   handlePress() {
@@ -67,6 +64,17 @@ class Infos extends Component {
     });
   }
 
+  toggleNavigationBar() {
+    const { state, setParams } = this.props.navigation;
+    const isHidden = state.params ? state.params.isHidden : false;
+    setParams({ isHidden: !isHidden });
+  }
+
+  handlePress: Function;
+  handlePageChange: Function;
+
+  props: PropsType;
+
   render() {
     const { params } = this.props.navigation.state;
     const isStatusBarHidden = params ? params.isHidden : false;
@@ -75,10 +83,11 @@ class Infos extends Component {
         <StatusBar hidden={isStatusBarHidden} />
         <View style={styles.container}>
           <Book
-            currentPage={1}
+            currentPage={params.currentPage}
             totalPages={params.infos.totalPages}
             book={params.book}
             rtl
+            onPageChange={this.handlePageChange}
             onPress={this.handlePress}
           />
         </View>
