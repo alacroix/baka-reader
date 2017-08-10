@@ -6,7 +6,7 @@ import Home from '../index';
 
 jest.mock('../../../services/FileSystem');
 
-describe('AppLoader', () => {
+describe('Home', () => {
   it('should render itself', () => {
     const navigation = {
       state: {

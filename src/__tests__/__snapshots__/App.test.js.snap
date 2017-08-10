@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should render itself 1`] = `
+<Navigator
+  navigation={
+    Object {
+      "dispatch": [Function],
+      "goBack": [Function],
+      "navigate": [Function],
+      "setParams": [Function],
+      "state": Object {
+        "index": 0,
+        "routes": Array [
+          Object {
+            "routeName": "appLoader",
+          },
+        ],
+      },
+    }
+  }
+/>
+`;
