@@ -1,8 +1,9 @@
 // @flow
 
 import React, { Component } from 'react';
-import { StatusBar, StyleSheet, View } from 'react-native';
+import { AppState, StatusBar, StyleSheet, View } from 'react-native';
 import { Book, Page, TouchableIcon } from 'bakareader/src/components';
+import { saveProgression } from 'bakareader/src/services/Storage';
 
 const styles = StyleSheet.create({
   container: {
@@ -15,6 +16,7 @@ type PropsType = {
 };
 
 type StateType = {
+  appState: string,
   lastPress: number,
 }
 
@@ -41,11 +43,29 @@ class Infos extends Component {
   state: StateType;
 
   componentWillMount() {
+    AppState.addEventListener('change', this.handleAppStateChange);
     this.handlePageChange = this.handlePageChange.bind(this);
     this.handlePress = this.handlePress.bind(this);
     this.setState({
+      appState: '',
       lastPress: 0,
     });
+  }
+
+  componentWillUnmount() {
+    AppState.removeEventListener('change', this.handleAppStateChange);
+    this.handleBookExit();
+  }
+
+  handleAppStateChange = (nextAppState: string) => {
+    if (nextAppState === 'inactive') {
+      this.handleBookExit();
+    }
+  }
+
+  handleBookExit() {
+    const { book, currentPage, infos } = this.props.navigation.state.params;
+    saveProgression(book, currentPage, currentPage === infos.totalPages);
   }
 
   handlePageChange(currentPage: number) {
