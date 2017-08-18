@@ -133,6 +133,7 @@ android {
 }
 
 dependencies {
+    compile project(':realm')
     compile project(':react-native-image-resizer')
     compile project(':react-native-fetch-blob')
     compile project(':react-native-vector-icons')
