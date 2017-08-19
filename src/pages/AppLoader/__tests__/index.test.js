@@ -4,7 +4,7 @@ import renderer from 'react-test-renderer';
 
 import AppLoader from '../index';
 
-jest.mock('../../../services/FileSystem');
+jest.mock('../../../services/BookManager');
 
 describe('AppLoader', () => {
   it('should render itself', () => {

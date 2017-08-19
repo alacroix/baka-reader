@@ -75,8 +75,3 @@ export async function getCurrentPage(book: BookType) {
     return currentProgress ? currentProgress.currentPage : 1;
   });
 }
-
-export default {
-  fetchImportedBooks,
-  getUserBooks,
-};

@@ -40,7 +40,6 @@ class Home extends Component {
     this.toggleModalVisibility = this.toggleModalVisibility.bind(this);
     getUserBooks()
       .then((books) => {
-        console.log('got books');
         books.addListener(this.onBooksUpdate);
         this.setState({
           books,

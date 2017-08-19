@@ -6,7 +6,7 @@ import App from '../App';
 
 const renderer = new ReactShallowRenderer();
 
-jest.mock('../services/FileSystem');
+jest.mock('../services/BookManager');
 
 const filterKeys = (state) => {
   if (state.routes) {
