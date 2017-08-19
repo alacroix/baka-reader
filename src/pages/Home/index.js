@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { Button, Grid, GridItem, HorizontalSlider, Page } from 'bakareader/src/components';
-import { filterByProgress, getUserBooks } from 'bakareader/src/services/BookManager';
+import { filterByProgress, getCurrentPage, getUserBooks } from 'bakareader/src/services/BookManager';
 import appStyle from 'bakareader/src/appStyle';
 import ModalDownload from './ModalDownload';
 
@@ -30,26 +30,38 @@ class Home extends Component {
     gesturesEnabled: false,
   };
 
-  constructor(props) {
-    super(props);
-
-    this.toggleModalVisibility = this.toggleModalVisibility.bind(this);
-    getUserBooks()
-      .then((books) => {
-        console.log(books.length);
-        this.state = {
-          books,
-        };
-      });
-  }
-
   state = {
     modalVisible: false,
     books: [],
   }
 
+  componentWillMount() {
+    this.onBooksUpdate = this.onBooksUpdate.bind(this);
+    this.toggleModalVisibility = this.toggleModalVisibility.bind(this);
+    getUserBooks()
+      .then((books) => {
+        console.log('got books');
+        books.addListener(this.onBooksUpdate);
+        this.setState({
+          books,
+        });
+      });
+  }
+
+  componentWillUnmount() {
+    this.state.books.removeAllListeners();
+  }
+
   onBookPress(book: BookType) {
-    this.props.navigation.navigate('infos', { book, currentPage: 1 });
+    const { navigate } = this.props.navigation;
+    getCurrentPage(book)
+      .then(currentPage => navigate('infos', { book, currentPage }));
+  }
+
+  onBooksUpdate(collection) {
+    this.setState({
+      books: collection,
+    });
   }
 
   toggleModalVisibility: Function;
@@ -62,7 +74,6 @@ class Home extends Component {
 
   render() {
     const { books } = this.state;
-    console.log('render');
     let inProgress = [];
     if (books.length > 0) {
       inProgress = filterByProgress(books);
