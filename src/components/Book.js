@@ -36,9 +36,8 @@ const styles = StyleSheet.create({
 });
 
 type PropsType = {
-  book: RNFetchBlobStat,
+  book: BookType,
   currentPage: number,
-  totalPages: number,
   rtl?: boolean,
   onPageChange?: (number) => void,
   onPress?: () => void,
@@ -82,7 +81,8 @@ class Book extends Component {
 
   handleZonePress(side: string) {
     let { currentPage } = this.state;
-    if (this.props.rtl) {
+    const { book, onPageChange, rtl } = this.props;
+    if (rtl) {
       currentPage += side === 'left' ? 1 : -1;
     } else {
       currentPage += side === 'right' ? 1 : -1;
@@ -91,12 +91,12 @@ class Book extends Component {
     if (currentPage < 1) {
       currentPage = 1;
     }
-    if (currentPage > this.props.totalPages) {
-      currentPage = this.props.totalPages;
+    if (currentPage > book.totalPages) {
+      currentPage = book.totalPages;
     }
 
-    if (this.props.onPageChange) {
-      this.props.onPageChange(currentPage);
+    if (onPageChange) {
+      onPageChange(currentPage);
     }
 
     this.setState({

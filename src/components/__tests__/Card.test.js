@@ -8,7 +8,7 @@ describe('Card', () => {
   it('should render the card', () => {
     const tree = renderer.create(
       <Card
-        coverUri={require('bakareader/assets/images/dummy/cover1.jpg')}
+        coverUri={require('fake/path/image.jpg')}
         title="Card title"
       />,
     ).toJSON();

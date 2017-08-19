@@ -48,6 +48,9 @@
 		AAD83A5503454345B681C414 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FFC16D79DB504CFC98642AC9 /* EvilIcons.ttf */; };
 		C9F52ED652124960B6AEAF5D /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C665C3EC366C4B6893D158AB /* FontAwesome.ttf */; };
 		0C6F928751514CB68955D543 /* libRCTImageResizer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA4E941FA1F94D31A1C7671A /* libRCTImageResizer.a */; };
+		52F53675BF4846BA9AF6D4D8 /* libRealmReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 96E1234DAD5D4AC89235EE11 /* libRealmReact.a */; };
+		124543CE55D34979B0C52F5E /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 97C03196C19D48458C929C72 /* libc++.tbd */; };
+		161C49E8D9AC46DE87B401A5 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A85EF2057504EABA6D095C6 /* libz.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -325,6 +328,10 @@
 		FFC16D79DB504CFC98642AC9 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		6D998231E8554B62A60D46DA /* RCTImageResizer.xcodeproj */ = {isa = PBXFileReference; name = "RCTImageResizer.xcodeproj"; path = "../node_modules/react-native-image-resizer/ios/RCTImageResizer.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		DA4E941FA1F94D31A1C7671A /* libRCTImageResizer.a */ = {isa = PBXFileReference; name = "libRCTImageResizer.a"; path = "libRCTImageResizer.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		920994EFCD9C433985BBE22D /* RealmReact.xcodeproj */ = {isa = PBXFileReference; name = "RealmReact.xcodeproj"; path = "../node_modules/realm/react-native/ios/RealmReact.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		96E1234DAD5D4AC89235EE11 /* libRealmReact.a */ = {isa = PBXFileReference; name = "libRealmReact.a"; path = "libRealmReact.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		97C03196C19D48458C929C72 /* libc++.tbd */ = {isa = PBXFileReference; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = sourcecode.text-based-dylib-definition; explicitFileType = undefined; includeInIndex = 0; };
+		2A85EF2057504EABA6D095C6 /* libz.tbd */ = {isa = PBXFileReference; name = "libz.tbd"; path = "usr/lib/libz.tbd"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = sourcecode.text-based-dylib-definition; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -354,6 +361,9 @@
 				34F943CD0D154D39B01C05F1 /* libRNVectorIcons.a in Frameworks */,
 				7FCF43F7F4B7411383D5E024 /* libRNFetchBlob.a in Frameworks */,
 				0C6F928751514CB68955D543 /* libRCTImageResizer.a in Frameworks */,
+				52F53675BF4846BA9AF6D4D8 /* libRealmReact.a in Frameworks */,
+				124543CE55D34979B0C52F5E /* libc++.tbd in Frameworks */,
+				161C49E8D9AC46DE87B401A5 /* libz.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -527,6 +537,7 @@
 				B2E055EEFA8E433B8B9D0D61 /* RNVectorIcons.xcodeproj */,
 				3BF564FE42FF490EA4A6297A /* RNFetchBlob.xcodeproj */,
 				6D998231E8554B62A60D46DA /* RCTImageResizer.xcodeproj */,
+				920994EFCD9C433985BBE22D /* RealmReact.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -548,6 +559,7 @@
 				00E356EF1AD99517003FC87E /* bakareaderTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				C8899689AC1346EF928198D1 /* Resources */,
+				50996B2AD68E4F1F9EF6BD6F /* Frameworks */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -596,6 +608,16 @@
 			);
 			name = Resources;
 			sourceTree = "<group>";
+		};
+		50996B2AD68E4F1F9EF6BD6F /* Frameworks */ = {
+			isa = "PBXGroup";
+			children = (
+				97C03196C19D48458C929C72 /* libc++.tbd */,
+				2A85EF2057504EABA6D095C6 /* libz.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -1147,12 +1169,14 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-image-resizer/ios/RCTImageResizer",
+					"$(SRCROOT)/../node_modules/realm/src/**",
 				);
 				INFOPLIST_FILE = bakareaderTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1177,12 +1201,14 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-image-resizer/ios/RCTImageResizer",
+					"$(SRCROOT)/../node_modules/realm/src/**",
 				);
 				INFOPLIST_FILE = bakareaderTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1208,6 +1234,7 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-image-resizer/ios/RCTImageResizer",
+					"$(SRCROOT)/../node_modules/realm/src/**",
 				);
 				INFOPLIST_FILE = bakareader/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1234,6 +1261,7 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-image-resizer/ios/RCTImageResizer",
+					"$(SRCROOT)/../node_modules/realm/src/**",
 				);
 				INFOPLIST_FILE = bakareader/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1266,11 +1294,13 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-image-resizer/ios/RCTImageResizer",
+					"$(SRCROOT)/../node_modules/realm/src/**",
 				);
 				INFOPLIST_FILE = "bakareader-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1304,11 +1334,13 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-image-resizer/ios/RCTImageResizer",
+					"$(SRCROOT)/../node_modules/realm/src/**",
 				);
 				INFOPLIST_FILE = "bakareader-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1343,6 +1375,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.bakareader-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1367,6 +1400,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",

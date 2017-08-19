@@ -41,6 +41,42 @@ exports[`Home should render itself 1`] = `
             }
           }
         >
+          En cours
+        </Text>
+        <View
+          style={
+            Object {
+              "marginBottom": 16,
+              "marginTop": 32,
+            }
+          }
+        >
+          <RCTScrollView
+            contentContainerStyle={
+              Object {
+                "paddingLeft": 16,
+                "paddingRight": 16,
+              }
+            }
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
+          >
+            <View />
+          </RCTScrollView>
+        </View>
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          disabled={false}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "fontSize": 20,
+              "marginLeft": 16,
+              "marginTop": 16,
+            }
+          }
+        >
           Collection
         </Text>
         <View

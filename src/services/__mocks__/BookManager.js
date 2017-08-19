@@ -1,4 +1,4 @@
-const books = [
+const storedBooks = [
   {
     filename: 'Book 1',
     lastModified: 1502018672000,
@@ -14,19 +14,22 @@ const books = [
   },
 ];
 
-export const DATABASE_DIR = '.';
-
-export async function createBooksDirectory() {
+export async function fetchImportedBooks() {
   return 'OK';
 }
 
-export async function getUserImportedBooks() {
+export async function getUserBooks() {
+  return storedBooks;
+}
+
+export function filterByProgress(books) {
   return books;
 }
 
-export async function importBook() {
-  return {
-    path: 'some/new/path',
-    totalPages: 42,
-  };
+export async function saveProgression() {
+  return 'OK';
+}
+
+export async function getCurrentPage() {
+  return 1;
 }

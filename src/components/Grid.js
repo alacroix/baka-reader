@@ -17,14 +17,14 @@ const styles = StyleSheet.create({
 });
 
 type PropsType = {
-  books: Array<RNFetchBlobStat>,
-  onBookPress: (RNFetchBlobStat) => void,
+  books: Array<BookType>,
+  onBookPress: (book: BookType) => void,
 }
 
 class Grid extends PureComponent {
-  _keyExtractor = (item: RNFetchBlobStat, index: number) => index.toString();
+  _keyExtractor = (item: BookType) => item.id;
 
-  _onPressItem = (book: RNFetchBlobStat) => {
+  _onPressItem = (book: BookType) => {
     this.props.onBookPress(book);
   }
 

@@ -3,10 +3,9 @@
 import React, { Component } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
-import { Button, Grid, Page } from 'bakareader/src/components';
-import { getBookInfos } from 'bakareader/src/services/FileSystem';
+import { Button, Grid, GridItem, HorizontalSlider, Page } from 'bakareader/src/components';
+import { filterByProgress, getCurrentPage, getUserBooks } from 'bakareader/src/services/BookManager';
 import appStyle from 'bakareader/src/appStyle';
-
 import ModalDownload from './ModalDownload';
 
 const styles = StyleSheet.create({
@@ -33,15 +32,35 @@ class Home extends Component {
 
   state = {
     modalVisible: false,
+    books: [],
   }
 
   componentWillMount() {
+    this.onBooksUpdate = this.onBooksUpdate.bind(this);
     this.toggleModalVisibility = this.toggleModalVisibility.bind(this);
+    getUserBooks()
+      .then((books) => {
+        books.addListener(this.onBooksUpdate);
+        this.setState({
+          books,
+        });
+      });
   }
 
-  onBookPress(book: RNFetchBlobStat) {
-    getBookInfos(book.path)
-      .then(infos => this.props.navigation.navigate('infos', { book, currentPage: 1, infos }));
+  componentWillUnmount() {
+    this.state.books.removeAllListeners();
+  }
+
+  onBookPress(book: BookType) {
+    const { navigate } = this.props.navigation;
+    getCurrentPage(book)
+      .then(currentPage => navigate('infos', { book, currentPage }));
+  }
+
+  onBooksUpdate(collection) {
+    this.setState({
+      books: collection,
+    });
   }
 
   toggleModalVisibility: Function;
@@ -53,11 +72,29 @@ class Home extends Component {
   props: PropsType;
 
   render() {
-    const books = this.props.navigation.state.params.books;
+    const { books } = this.state;
+    let inProgress = [];
+    if (books.length > 0) {
+      inProgress = filterByProgress(books);
+    }
     return (
       <Page noMargin>
         <View style={styles.container}>
           <ScrollView showsVerticalScrollIndicator={false}>
+            <Text style={styles.header}>
+              En cours
+            </Text>
+            <HorizontalSlider>
+              {
+                inProgress.map(book => (
+                  <GridItem
+                    item={book}
+                    key={book.id}
+                    onPressItem={item => this.onBookPress(item)}
+                  />
+                ))
+              }
+            </HorizontalSlider>
             <Text style={styles.header}>
               Collection
             </Text>

@@ -1,8 +1,10 @@
 // @flow
 
 import React, { Component } from 'react';
-import { StatusBar, StyleSheet, View } from 'react-native';
+import { AppState, StatusBar, StyleSheet, View } from 'react-native';
+
 import { Book, Page, TouchableIcon } from 'bakareader/src/components';
+import { saveProgression } from 'bakareader/src/services/BookManager';
 
 const styles = StyleSheet.create({
   container: {
@@ -15,6 +17,7 @@ type PropsType = {
 };
 
 type StateType = {
+  appState: string,
   lastPress: number,
 }
 
@@ -22,13 +25,13 @@ class Infos extends Component {
   static navigationOptions = ({ navigation }) => {
     const { state, setParams } = navigation;
     const isHidden: boolean = state.params ? state.params.isHidden : false;
-    const book: RNFetchBlobStat = state.params.book;
+    const book: BookType = state.params.book;
     if (isHidden) {
       return { header: null, gesturesEnabled: false };
     }
 
     return {
-      title: `${book.filename} [${state.params.currentPage} / ${state.params.infos.totalPages}]`,
+      title: `${book.name} [${state.params.currentPage} / ${book.totalPages}]`,
       headerRight: (
         <TouchableIcon
           name="fullscreen"
@@ -41,11 +44,29 @@ class Infos extends Component {
   state: StateType;
 
   componentWillMount() {
+    AppState.addEventListener('change', this.handleAppStateChange);
     this.handlePageChange = this.handlePageChange.bind(this);
     this.handlePress = this.handlePress.bind(this);
     this.setState({
+      appState: '',
       lastPress: 0,
     });
+  }
+
+  componentWillUnmount() {
+    AppState.removeEventListener('change', this.handleAppStateChange);
+    this.handleBookExit();
+  }
+
+  handleAppStateChange = (nextAppState: string) => {
+    if (nextAppState === 'inactive') {
+      this.handleBookExit();
+    }
+  }
+
+  handleBookExit() {
+    const { book, currentPage } = this.props.navigation.state.params;
+    saveProgression(book, currentPage);
   }
 
   handlePageChange(currentPage: number) {
@@ -84,7 +105,6 @@ class Infos extends Component {
         <View style={styles.container}>
           <Book
             currentPage={params.currentPage}
-            totalPages={params.infos.totalPages}
             book={params.book}
             rtl
             onPageChange={this.handlePageChange}

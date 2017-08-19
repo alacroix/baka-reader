@@ -4,7 +4,7 @@ import renderer from 'react-test-renderer';
 
 import Home from '../index';
 
-jest.mock('../../../services/FileSystem');
+jest.mock('../../../services/BookManager');
 
 describe('Home', () => {
   it('should render itself', () => {
