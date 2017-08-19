@@ -1,3 +1,5 @@
+// @flow
+
 import RNFetchBlob from 'react-native-fetch-blob';
 
 import { createThumbnail } from './Image';
@@ -10,23 +12,24 @@ const DIRECTORIES = RNFetchBlob.fs.dirs;
  * *****************
  */
 
-function isRawBook(file) {
-  return file.type === 'directory';
+function isRawBook(file: RNFetchBlobStat) {
+  return file.type === 'directory' && !file.filename.includes('realm');
 }
 
-function isImage(file) {
+function isImage(file: RNFetchBlobStat) {
   return file.filename.split('.').pop() === 'jpg';
 }
 
-function getParentPath(path) {
+function getParentPath(path: string) {
   return path.substring(0, path.lastIndexOf('/'));
 }
 
-async function getDirectoryFiles(dirPath) {
+async function getDirectoryFiles(dirPath: string) {
   return RNFetchBlob.fs.lstat(dirPath).then(files => files);
 }
 
 const BOOKS_DIR = `${getParentPath(DIRECTORIES.DocumentDir)}/Library/Books`;
+export const DATABASE_DIR = `${getParentPath(DIRECTORIES.DocumentDir)}/Library/Caches/realm`;
 
 /*
  * *****************
@@ -46,8 +49,8 @@ export async function getUserImportedBooks() {
   return files.filter(file => isRawBook(file));
 }
 
-export async function formatBook(book) {
-  const path = `${BOOKS_DIR}/${book.filename}`;
+export async function importBook(book: RNFetchBlobStat, guid: string) {
+  const path = `${BOOKS_DIR}/${guid}`;
   const pagesPath = `${path}/pages`;
   await RNFetchBlob.fs.mkdir(path);
   await RNFetchBlob.fs.mv(book.path, pagesPath);
@@ -55,19 +58,8 @@ export async function formatBook(book) {
   const images = files.filter(file => isImage(file));
   await Promise.all(images.map((image, index) => RNFetchBlob.fs.mv(image.path, `${pagesPath}/${index + 1}.jpg`)));
   await createThumbnail(path);
-}
-
-export async function getUserBooks() {
-  const files = await getDirectoryFiles(BOOKS_DIR);
-  return files.filter(file => file.type === 'directory');
-}
-
-export async function getBookInfos(path) {
-  const infos = {};
-  const files = await getDirectoryFiles(`${path}/pages`);
-  const images = files.filter(file => isImage(file));
-
-  infos.totalPages = images.length;
-
-  return infos;
+  return {
+    path,
+    totalPages: images.length,
+  };
 }

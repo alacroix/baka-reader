@@ -5,8 +5,8 @@ import React, { PureComponent } from 'react';
 import Card from './Card';
 
 type PropsType = {
-  item: RNFetchBlobStat,
-  onPressItem: (item: RNFetchBlobStat) => void,
+  item: BookType,
+  onPressItem: (item: BookType) => void,
 }
 
 class GridItem extends PureComponent {
@@ -28,7 +28,7 @@ class GridItem extends PureComponent {
       <Card
         coverUri={{ uri: `${item.path}/thumbnail.jpg` }}
         onPress={this._onPress}
-        title={item.filename}
+        title={item.name}
       />
     );
   }

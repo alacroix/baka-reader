@@ -2,8 +2,9 @@
 
 import React, { Component } from 'react';
 import { AppState, StatusBar, StyleSheet, View } from 'react-native';
+
 import { Book, Page, TouchableIcon } from 'bakareader/src/components';
-import { saveProgression } from 'bakareader/src/services/Storage';
+import { saveProgression } from 'bakareader/src/services/BookManager';
 
 const styles = StyleSheet.create({
   container: {
@@ -24,13 +25,13 @@ class Infos extends Component {
   static navigationOptions = ({ navigation }) => {
     const { state, setParams } = navigation;
     const isHidden: boolean = state.params ? state.params.isHidden : false;
-    const book: RNFetchBlobStat = state.params.book;
+    const book: BookType = state.params.book;
     if (isHidden) {
       return { header: null, gesturesEnabled: false };
     }
 
     return {
-      title: `${book.filename} [${state.params.currentPage} / ${state.params.infos.totalPages}]`,
+      title: `${book.name} [${state.params.currentPage} / ${book.totalPages}]`,
       headerRight: (
         <TouchableIcon
           name="fullscreen"
@@ -64,8 +65,8 @@ class Infos extends Component {
   }
 
   handleBookExit() {
-    const { book, currentPage, infos } = this.props.navigation.state.params;
-    saveProgression(book, currentPage, currentPage === infos.totalPages);
+    const { book, currentPage } = this.props.navigation.state.params;
+    saveProgression(book, currentPage);
   }
 
   handlePageChange(currentPage: number) {
@@ -104,7 +105,6 @@ class Infos extends Component {
         <View style={styles.container}>
           <Book
             currentPage={params.currentPage}
-            totalPages={params.infos.totalPages}
             book={params.book}
             rtl
             onPageChange={this.handlePageChange}

@@ -25,13 +25,3 @@ export async function getUserImportedBooks() {
 export async function formatBook(book) {
   return book;
 }
-
-export async function getUserBooks() {
-  return books;
-}
-
-export async function getBookInfos() {
-  return {
-    totalPages: 42,
-  };
-}

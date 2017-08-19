@@ -5,12 +5,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import appStyle from 'bakareader/src/appStyle';
 import { Page } from 'bakareader/src/components';
-import {
-  createBooksDirectory,
-  formatBook,
-  getUserBooks,
-  getUserImportedBooks,
-} from 'bakareader/src/services/FileSystem';
+import { fetchImportedBooks } from 'bakareader/src/services/BookManager';
 
 const styles = StyleSheet.create({
   container: {
@@ -44,15 +39,8 @@ class AppLoader extends Component {
   };
 
   componentWillMount() {
-    createBooksDirectory()
-      .then(() => getUserImportedBooks())
-      .then(rawBooks => this.importRawBooks(rawBooks));
-  }
-
-  importRawBooks(rawBooks: Array<RNFetchBlobStat>) {
-    Promise.all(rawBooks.map(book => formatBook(book)))
-      .then(() => getUserBooks())
-      .then(books => this.props.navigation.navigate('home', { books }));
+    fetchImportedBooks()
+      .then(() => this.props.navigation.navigate('home'));
   }
 
   props: PropsType;
