@@ -10,7 +10,7 @@ export async function createThumbnail(bookPath) {
     'JPEG',
     80,
   )
-    .then(resizedImageUri => RNFetchBlob.fs.mv(resizedImageUri, `${bookPath}/thumbnail.jpg`));
+    .then(({ uri }) => RNFetchBlob.fs.mv(uri, `${bookPath}/thumbnail.jpg`));
 }
 
 export default {
