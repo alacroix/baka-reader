@@ -30,7 +30,7 @@
     "babel-preset-react-native": "2.1.0",
     "coveralls": "3.0.0",
     "eslint": "4.5.0",
-    "eslint-config-airbnb": "15.1.0",
+    "eslint-config-airbnb": "17.0.0",
     "eslint-plugin-flowtype": "2.35.0",
     "eslint-plugin-import": "2.11.0",
     "eslint-plugin-jsx-a11y": "5.1.1",
