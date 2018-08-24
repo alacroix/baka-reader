@@ -21,7 +21,7 @@
     "react-native-modal": "2.5.0",
     "react-native-vector-icons": "4.6.0",
     "react-navigation": "1.0.0-beta.11",
-    "realm": "1.10.3"
+    "realm": "2.15.3"
   },
   "devDependencies": {
     "babel-core": "6.26.0",
