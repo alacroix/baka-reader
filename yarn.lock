@@ -3893,9 +3893,10 @@ react-native-fetch-blob@0.10.8:
     base-64 "0.1.0"
     glob "7.0.6"
 
-react-native-image-resizer@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/react-native-image-resizer/-/react-native-image-resizer-1.0.0.tgz#d47e14943c37938e287fbd639e4db7ceb7fd8917"
+react-native-image-resizer@1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/react-native-image-resizer/-/react-native-image-resizer-1.2.2.tgz#fb17d136c03b1f3eb646dc778f1128f6008880a4"
+  integrity sha512-zTS/jERFqLQ669uu+wzsVtIv1gxCeODLIVC5O5zsN7Iqwc5TuTLqBdNb890grrlrwHSPq/md3y7oAU6tRbpFfA==
 
 react-native-modal@2.5.0:
   version "2.5.0"
